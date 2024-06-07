@@ -1,0 +1,12 @@
+{
+    "name": "{{ cookiecutter.package_name }}",
+    "image": "python:{{ cookiecutter.python_version }}",
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "runArgs": [
+        "--name",
+        "{{ cookiecutter.package_name }}"
+    ],
+    "postCreateCommand": "/bin/bash .devcontainer/postCreateCommand.sh",
+    "shutdownAction": "stopContainer"
+}
