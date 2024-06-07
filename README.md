@@ -6,6 +6,7 @@
 
 ## Templates
 
+- data-science
 - python-package
 
 ## Usage
