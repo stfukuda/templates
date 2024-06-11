@@ -26,7 +26,7 @@ setup:
 			git checkout -b develop; \
 			git add .; \
 			git commit -m "add template folder"; \
-			poetry install --with dev,test,docs; \
+			poetry install --with dev,test,docs,lab; \
 			git add poetry.lock; \
 			git commit -m "add poetry.lock"; \
 			poetry run pre-commit install; \
@@ -34,19 +34,19 @@ setup:
 			git add .pre-commit-config.yaml; \
 			git commit -m "update pre-commit hooks revision or tag"; \
 		else \
-			poetry install --with dev,test,docs; \
+			poetry install --with dev,test,docs,lab; \
 		fi; \
 		echo "Setup is complete."; \
 	fi
 
 .PHONY: sync
 sync:
-	@poetry install --with dev,test,docs
+	@poetry install --with dev,test,docs,lab
 	@poetry run pre-commit install
 
 .PHONY: update
 update:
-	@poetry update --with dev,test,docs
+	@poetry update --with dev,test,docs,lab
 	@poetry run pre-commit autoupdate
 
 .PHONY: check
