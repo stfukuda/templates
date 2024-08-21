@@ -10,7 +10,7 @@
         "PATH": "/root/.local/bin:${containerEnv:PATH}"
     },
     "runArgs": [
-        {% if cookiecutter.use_gpu -%}
+        {% if cookiecutter.use_gpu == 'yes' -%}
         "--gpus",
         "all",
         "--shm-size=4g",

@@ -1,5 +1,5 @@
 [virtualenvs]
-{% if cookiecutter.use_docker -%}
+{% if cookiecutter.use_docker == 'yes' -%}
 create = false
 {% else -%}
 in-project = true
