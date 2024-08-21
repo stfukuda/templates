@@ -22,11 +22,11 @@
         "3.12"
     ],
     "use_docker": [
-        false,
-        true
+        "yes",
+        "no"
     ],
     "use_gpu": [
-        false,
-        true
+        "yes",
+        "no"
     ]
 }
