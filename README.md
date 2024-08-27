@@ -13,7 +13,7 @@
 
 Simple command line usage:
 
-``` shell
+```bash
 cookiecutter https://github.com/stfukuda/project-templates.git --directory "python-package"
 ```
 
