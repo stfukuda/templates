@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{ cookiecutter.repository_name }}"
+dynamic = ["version"]
+description = "{{ cookiecutter.description }}"
+authors = [
+    { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">={{ cookiecutter.python_version }}"
+dependencies = []
+
+[project.urls]
+# Homepage = "None"
+# Documentation = "None"
+# Source = "None"
+# Issues = "None"
+# Changelog = "None"
+
+[dependency-groups]
+dev = [
+    "pre-commit",
+]
+lint = [
+    "ruff",
+    "bandit[toml]",
+]
+lab = [
+    "jupyterlab",
+    "ipywidgets",
+]
+docs = [
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocs-include-markdown-plugin",
+    "mkdocstrings[python]",
+]
+
+[tool.uv]
+default-groups = ["dev", "lint", "lab", "docs"]
+
+[tool.ruff]
+target-version = "py{{ cookiecutter.python_version.replace('.', '') }}"
+extend-include = [".git", "notebooks", "references", "models", "data"]
+
+[tool.bandit]
+skips = ["B101", "B601"]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "_version.py"

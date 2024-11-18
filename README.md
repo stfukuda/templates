@@ -6,8 +6,9 @@
 
 ## Templates
 
-- data-science
-- python-package
+- Python
+  - data-science
+  - python-package
 
 ## Usage
 

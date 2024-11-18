@@ -1,7 +1,0 @@
-[virtualenvs]
-{% if cookiecutter.use_docker == 'yes' -%}
-create = false
-{% else -%}
-in-project = true
-prefer-active-python = true
-{% endif -%}

@@ -1,7 +1,9 @@
 {
     "project_name": "project_name",
-    "package_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
-    "author": "Your name <email address>",
+    "repository_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "module_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "author_name": "Your name",
+    "author_email": "Email address",
     "description": "A short description of this project.",
     "license": [
         "MIT",
@@ -19,14 +21,7 @@
         "3.9",
         "3.10",
         "3.11",
-        "3.12"
-    ],
-    "use_docker": [
-        "yes",
-        "no"
-    ],
-    "use_gpu": [
-        "yes",
-        "no"
+        "3.12",
+        "3.13"
     ]
 }
