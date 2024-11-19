@@ -27,7 +27,7 @@ setup:
 			git add .; \
 			git commit -m "add template folder"; \
 			git tag v0.1.0;\
-			uv sync; \
+			uv sync --group lint --group test --group docs; \
 			git add uv.lock _version.py; \
 			git commit -m "run 'uv sync' to initialize project's synchronization"; \
 			uv run pre-commit install; \
@@ -35,14 +35,14 @@ setup:
 			git add .pre-commit-config.yaml; \
 			git commit --no-verify -m "update pre-commit hooks revision or tag"; \
 		else \
-			uv sync; \
+			uv sync --group lint --group test --group docs; \
 		fi; \
 		echo "Setup is complete."; \
 	fi
 
 .PHONY: sync
 sync:
-	@uv sync
+	@uv sync --group lint --group test --group docs
 	@uv run pre-commit install
 
 .PHONY: update
@@ -58,7 +58,7 @@ check:
 
 .PHONY: test
 test:
-	@uv run --env-file .env pytest --cov=src --cov-report=term-missing -n 1 tests/
+	@uv run pytest --cov=src --cov-report=term-missing -n 1 ./tests
 
 .PHONY: build
 build:
@@ -69,11 +69,11 @@ build:
 
 .PHONY: docs
 docs:
-	@uv run --env-file .env mkdocs build
+	@uv run mkdocs build
 
 .PHONY: serve
 serve:
-	@uv run --env-file .env mkdocs serve
+	@uv run mkdocs serve
 
 .PHONY: clean
 clean:
