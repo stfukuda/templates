@@ -40,9 +40,6 @@ docs = [
     "mkdocstrings[python]",
 ]
 
-[tool.uv]
-default-groups = ["dev", "lint", "lab", "docs"]
-
 [tool.ruff]
 target-version = "py{{ cookiecutter.python_version.replace('.', '') }}"
 extend-include = [".git", "notebooks", "references", "models", "data"]
