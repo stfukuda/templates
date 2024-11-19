@@ -47,6 +47,9 @@ extend-include = [".git", "notebooks", "references", "models", "data"]
 [tool.bandit]
 skips = ["B101", "B601"]
 
+[tool.pytest.ini_options]
+pythonpath = "src"
+
 [tool.hatch.version]
 source = "vcs"
 
