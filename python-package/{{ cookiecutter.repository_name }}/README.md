@@ -13,7 +13,7 @@ This library requires:
 It can be installed as follows using pip:
 
 ```shell
-pip install -U {{ cookiecutter.package_name }}
+pip install -U {{ cookiecutter.module_name }}
 ```
 
 ## Usage
