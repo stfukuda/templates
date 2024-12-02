@@ -6,7 +6,7 @@
 
 This library requires:
 
-- Python (>={{ cookiecutter.python_version }})
+- [Python (>={{ cookiecutter.python_version }})](https://www.python.org/)
 
 ## Installation
 

@@ -9,7 +9,7 @@
 To use this project, you need to install the following components:
 
 - [uv (For Python package and project manager)](https://github.com/astral-sh/uv)
-  - Python (>={{ cookiecutter.python_version }})
+  - [Python (>={{ cookiecutter.python_version }})](https://www.python.org/)
 - [Git](https://git-scm.com/)
 
 ## Project Organization
