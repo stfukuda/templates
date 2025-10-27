@@ -1,0 +1,57 @@
+_min_copier_version: "9.0.0"
+_answers_file: ".copier-answers.yml"
+_default_output_path: "[[ project_slug ]]"
+project_name:
+  type: str
+  help: Display name of the project.
+  default: project_name
+
+project_slug:
+  type: str
+  help: Slugified project identifier used for the repository name and top-level folder.
+  default: "[[ project_name|lower|replace(' ', '-') ]]"
+
+module_name:
+  type: str
+  help: Python package import name.
+  default: "[[ project_name|lower|replace(' ', '_')|replace('-', '_') ]]"
+
+author_name:
+  type: str
+  help: Primary author name.
+  default: "Your name"
+
+author_email:
+  type: str
+  help: Primary author email address.
+  default: "Email address"
+
+description:
+  type: str
+  help: Short project description.
+  default: "A short description of this project."
+
+license:
+  type: str
+  help: Select an open source license.
+  default: MIT
+  choices:
+    - MIT
+    - Apache-2.0
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - GPL-2.0-only
+    - GPL-3.0-only
+    - LGPL-2.0
+    - LGPL-2.1
+    - LGPL-3.0
+    - Unlicense
+
+python_version:
+  type: str
+  help: Minimum supported Python version.
+  default: "3.11"
+  choices:
+    - "3.11"
+    - "3.12"
+    - "3.13"
