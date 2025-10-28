@@ -1,17 +1,14 @@
 _min_copier_version: "9.0.0"
 _answers_file: ".copier-answers.yml"
-_default_output_path: "[[ repository_name ]]"
-_jinja_extensions:
-  - jinja2_time.TimeExtension
-
+_default_output_path: "[[ project_slug ]]"
 project_name:
   type: str
   help: Display name of the project.
   default: project_name
 
-repository_name:
+project_slug:
   type: str
-  help: Repository slug used for the package and top-level folder name.
+  help: Slugified project identifier used for the repository name and top-level folder.
   default: "[[ project_name|lower|replace(' ', '-') ]]"
 
 module_name:

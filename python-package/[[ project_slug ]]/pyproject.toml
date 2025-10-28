@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "[[ repository_name ]]"
+name = "[[ project_slug ]]"
 version = "0.1.0"
 description = "[[ description ]]"
 authors = [
@@ -68,9 +68,10 @@ lint = [
     "ruff",
     "bandit[toml]",
 ]
-lab = [
-    "jupyterlab",
-    "ipywidgets",
+test = [
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
 ]
 docs = [
     "mkdocs",
@@ -81,7 +82,7 @@ docs = [
 
 [tool.ruff]
 target-version = "py[[ python_version.replace('.', '') ]]"
-extend-include = [".git", "notebooks", "references", "models", "data"]
+extend-include = [".git"]
 
 [tool.bandit]
 skips = ["B101", "B601"]

@@ -2,7 +2,7 @@ docs_dir: docs
 site_dir: site
 site_name: [[ project_name ]]
 site_author: [[ author_name ]]
-copyright: Copyright &copy; {% now 'utc', '%Y' %} [[ author_name ]] <[[ author_email ]]>
+copyright: Copyright &copy; [[ _copier_conf.timestamp.strftime('%Y') ]] [[ author_name ]] <[[ author_email ]]>
 theme:
   name: material
   features:
