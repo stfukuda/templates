@@ -21,26 +21,10 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     {% elif license == 'BSD-2-Clause' or license == 'BSD-3-Clause' -%}
     "License :: OSI Approved :: BSD License",
-    {% elif license == 'GPL-2.0-only' -%}
-    "License :: OSI Approved :: GNU General Public License (GPL)",
-    "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
-    {% elif license == 'GPL-3.0-only' -%}
-    "License :: OSI Approved :: GNU General Public License (GPL)",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-    {% elif license == 'LGPL-2.0' -%}
-    "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
-    "License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)",
-    {% elif license == 'LGPL-2.1' -%}
-    "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
-    "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
-    {% elif license == 'LGPL-3.0' -%}
-    "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
-    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    {% elif license == 'Unlicense' -%}
+    "License :: OSI Approved :: The Unlicense (Unlicense)",
     {% endif -%}
     "Operating System :: MacOS",
-    "Operating System :: Microsoft :: Windows",
-    "Operating System :: POSIX",
-    "Operating System :: Unix",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
     {% set all_versions = ["3.11", "3.12", "3.13"] -%}
