@@ -1,0 +1,15 @@
+_min_copier_version: "9.0.0"
+_answers_file: ".copier-answers.yml"
+
+template:
+  type: str
+  help: Select the template to copy.
+  default: python-package
+  choices:
+    python-package: python-package
+    data-science: data-science
+
+_subdirectory: "{{ template }}"
+
+_exclude:
+  - copier.yml
