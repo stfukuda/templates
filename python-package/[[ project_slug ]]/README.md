@@ -59,6 +59,12 @@ Remove cached artifacts and virtual environments with:
 just clean
 ```
 
+### Release workflow
+
+- Formal release: create a git tag like `v1.2.3` and push it. GitHub Actions builds the package with `uv build` and publishes it to PyPI using the `PYPI_API_TOKEN` secret.
+- Test release: create a pre-release tag such as `v1.2.3-dev.1`. The release workflow publishes the build to TestPyPI using the `TEST_PYPI_API_TOKEN` secret.
+- Each release reuses the artifacts produced by the workflow; ensure the secrets are configured before tagging.
+
 ## License
 
 [[[ license ]] License](LICENSE)

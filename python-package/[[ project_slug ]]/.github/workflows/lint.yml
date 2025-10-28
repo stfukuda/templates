@@ -1,13 +1,24 @@
-name: Linter
+name: Lint
 
 on:
-  pull_request:
-    branches:
-      - main
-      - develop
+  push:
+    branches: [main]
     paths:
       - "src/**/*.py"
       - "tests/**/*.py"
+      - "pyproject.toml"
+      - ".pre-commit-config.yaml"
+      - "Justfile"
+      - ".markdownlint.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/**/*.py"
+      - "tests/**/*.py"
+      - "pyproject.toml"
+      - ".pre-commit-config.yaml"
+      - ".markdownlint.json"
+      - "Justfile"
 
 jobs:
   lint:
@@ -15,13 +26,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install uv
         uses: astral-sh/setup-uv@v3
-      - name: Setup Python
+
+      - name: Install Python
         run: uv python install [[ python_version ]]
-      - name: Install the project
-        run: uv sync --group lint
-      - name: Check by ruff
+
+      - name: Install tooling
+        run: uv sync --group lint --frozen
+
+      - name: Ruff (lint)
         run: uv run ruff check ./src ./tests
-      - name: Check by bandit
+
+      - name: Mypy (type check)
+        run: uv run mypy ./src ./tests
+
+      - name: Bandit (security)
         run: uv run bandit -c pyproject.toml -r ./src ./tests

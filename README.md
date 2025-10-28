@@ -22,6 +22,14 @@ This repository hosts multiple Python-focused project templates maintained with 
 
 2. Answer the remaining questions (project name, description, license, etc.) and follow the generated project's `README.md` to finish setup.
 
+## Releases
+
+The `python-package` template ships with GitHub Actions workflows for linting, testing, and releasing packages.
+
+- Tag `vX.Y.Z` to trigger a PyPI release (requires `PYPI_API_TOKEN`).
+- Tag `vX.Y.Z-dev.N` to trigger a TestPyPI release (requires `TEST_PYPI_API_TOKEN`).
+- Both workflows build with `uv` and reuse artifacts between jobs.
+
 ## Updating an Existing Project
 
 When template improvements land upstream, update your project with:
