@@ -1,0 +1,80 @@
+default: help
+
+set shell := ["bash", "-euo", "pipefail", "-c"]
+
+uv := env_var_or_default("UV", "uv")
+
+alias s := setup
+alias t := test
+
+help:
+    @echo "Usage: just <recipe>"
+    @echo ""
+    @echo "Common aliases:"
+    @echo "  s -> setup"
+    @echo "  t -> test"
+    @echo ""
+    @just --list
+
+setup:
+    [[ uv ]] sync --all-groups
+    [[ uv ]] run pre-commit install
+    just --list
+
+sync:
+    [[ uv ]] sync --all-groups
+    [[ uv ]] run pre-commit install
+
+update:
+    before=$(mktemp)
+    git status --porcelain | awk '{print $2}' > "$before"
+    [[ uv ]] lock --upgrade --refresh
+    [[ uv ]] sync --all-groups
+    [[ uv ]] run pre-commit autoupdate
+    after=$(mktemp)
+    git status --porcelain | awk '{print $2}' > "$after"
+    new_files=$(comm -13 <(sort "$before") <(sort "$after") | grep -E '^(pyproject\.toml|uv\.lock|\.pre-commit-config\.yaml)$' || true)
+    if [ -n "$new_files" ]; then
+        while IFS= read -r file; do
+            git add -- "$file"
+        done <<< "$new_files"
+        git commit -m "chore: update tooling"
+    else
+        echo "No update-related changes to commit."
+    fi
+    rm -f "$before" "$after"
+
+check:
+    set -euxo pipefail
+    before=$(mktemp)
+    git status --porcelain | awk '{print $2}' > "$before"
+    [[ uv ]] run ruff format ./src ./tests
+    [[ uv ]] run ruff check --fix ./src ./tests
+    [[ uv ]] run mypy ./src ./tests
+    [[ uv ]] run bandit -c pyproject.toml -r ./src ./tests
+    after=$(mktemp)
+    git status --porcelain | awk '{print $2}' > "$after"
+    new_files=$(comm -13 <(sort "$before") <(sort "$after") | grep -E '^(src/|tests/).*\.py$' || true)
+    if [ -n "$new_files" ]; then
+        while IFS= read -r file; do
+            git add -- "$file"
+        done <<< "$new_files"
+        git commit -m "chore: apply formatting"
+    else
+        echo "No lint-related changes to commit."
+    fi
+    rm -f "$before" "$after"
+
+test:
+    [[ uv ]] run pytest --cov=src --cov-report=term-missing -n 1 ./tests
+
+build:
+    [[ uv ]] build
+
+clean:
+    find ./ -type f -name "*.py[co]" -delete
+    find ./ -type d -name "__pycache__" -delete
+    find ./ -type d -name "dist" -delete
+    find ./ -type d -name "htmlcov" -delete
+    find ./ -type f -name ".coverage" -delete
+    rm -rf .venv .uv .coverage htmlcov .cache

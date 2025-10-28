@@ -9,7 +9,7 @@ template:
     python-package: python-package
     data-science: data-science
 
-_subdirectory: "{{ template }}"
+_subdirectory: "[[ template ]]"
 
 _exclude:
   - copier.yml

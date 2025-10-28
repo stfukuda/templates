@@ -2,15 +2,9 @@
 
 [[ description ]]
 
-## Dependencies
-
-This library requires:
-
-- [Python (>=[[ python_version ]])](https://www.python.org/)
-
 ## Installation
 
-It can be installed as follows using pip:
+The package can be installed from PyPI:
 
 ```shell
 pip install -U [[ module_name ]]
@@ -22,39 +16,48 @@ Describe how to use the library in this part.
 
 ## Development
 
-Development requires:
+### Prerequisites
 
-- [uv (For Python package and project manager)](https://github.com/astral-sh/uv)
-  - Python (>=[[ python_version ]])
-- [Git](https://git-scm.com/)
+- Docker Desktop (or Docker Engine with the Dev Container CLI)
+- One of the following:
+  - [Visual Studio Code](https://code.visualstudio.com/) with the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+  - The [Dev Container CLI](https://github.com/devcontainers/cli) (`npm install -g @devcontainers/cli`)
+- [Just](https://github.com/casey/just) task runner (optional but recommended)
 
-### Source code
+> The Dev Container image installs both `uv` and `just`, so host installation of `just` is only needed if you plan to run the recipes outside the container.
 
-You can check the latest sources with the command:
+### Getting started (VS Code)
 
-```shell
-git clone URL
-```
+1. Open the repository in VS Code.
+2. When prompted, select **“Reopen in Container”** (or run the **Dev Containers: Reopen in Container** command).
+3. Wait for the container build to complete. The `postCreateCommand` automatically runs `just setup`, which syncs dependencies and installs pre-commit hooks.
 
-### Enviroment
-
-After cloning the repository, you can install the development environment with the command:
-
-```shell
-make install
-```
-
-### Testing
-
-After installation, you can run the test with the command:
+### Getting started (Dev Container CLI)
 
 ```shell
-make test
+devcontainer up --workspace-folder .
+devcontainer exec --workspace-folder . just setup
 ```
 
-### Submitting a Pull Request
+Run additional commands as needed, for example `devcontainer exec --workspace-folder . just check`.
 
-If the test passes, send the pull request according to the format.
+### Common workflows (inside the container)
+
+- `just setup` – re-sync dependencies and re-install pre-commit hooks
+- `just sync` – refresh the virtual environment using `uv sync`
+- `just update` – upgrade locked dependencies and hooks
+- `just check` – format & lint/type-check the codebase (Ruff + mypy + Bandit)
+- `just test` – execute the test suite with pytest
+- `just build` – build distributable artifacts into dist/
+- `just --list` – show all available recipes
+
+### Cleaning up
+
+Remove cached artifacts and virtual environments with:
+
+```shell
+just clean
+```
 
 ## License
 

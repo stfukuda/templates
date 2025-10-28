@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
 
 [project]
 name = "[[ project_slug ]]"
@@ -51,17 +51,12 @@ dev = [
 lint = [
     "ruff",
     "bandit[toml]",
+    "mypy",
 ]
 test = [
     "pytest",
     "pytest-cov",
     "pytest-xdist",
-]
-docs = [
-    "mkdocs",
-    "mkdocs-material",
-    "mkdocs-include-markdown-plugin",
-    "mkdocstrings[python]",
 ]
 
 [tool.ruff]
@@ -70,6 +65,19 @@ extend-include = [".git"]
 
 [tool.bandit]
 skips = ["B101", "B601"]
+
+[tool.mypy]
+python_version = "[[ python_version ]]"
+show_error_codes = true
+pretty = true
+warn_unreachable = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+disallow_any_generics = true
 
 [tool.pytest.ini_options]
 pythonpath = "src"

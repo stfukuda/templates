@@ -9,7 +9,7 @@ This repository hosts multiple Python-focused project templates maintained with 
 
 ## Templates
 
-- `python-package` - opinionated package skeleton with Hatch, Ruff, pytest, MkDocs, GitHub workflows, and pre-commit hooks.
+- `python-package` - opinionated package skeleton with Hatch, Ruff, pytest, uv, Dev Container setup, and pre-commit hooks.
 - `data-science` - data project layout inspired by Cookiecutter Data Science, including notebooks, data staging folders, Typer CLI, and MkDocs documentation.
 
 ## Quick Start
