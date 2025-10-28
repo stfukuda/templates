@@ -5,7 +5,7 @@ This repository hosts multiple Python-focused project templates maintained with 
 ## Prerequisites
 
 - Python 3.11+
-- `copier` (install with `pipx install copier` or `pip install copier`)
+- `copier` (see the [official installation guide](https://copier.readthedocs.io/en/stable/getting-started/#installation))
 
 ## Templates
 
@@ -14,21 +14,13 @@ This repository hosts multiple Python-focused project templates maintained with 
 
 ## Quick Start
 
-1. Decide which template to use (`python-package` or `data-science`).
-2. Run Copier, pointing to this repository and the template directory:
+1. Run the command below in the directory where you want the project (follow the interactive prompt to choose a template):
 
    ```bash
-   copier copy https://github.com/stfukuda/project-templates.git python-package
+   copier copy gh:stfukuda/templates my-new-project
    ```
 
-   To control the destination directory explicitly:
-
-   ```bash
-   copier copy https://github.com/stfukuda/project-templates.git data-science ~/workspace/my-data-project
-   ```
-
-3. Answer the prompts for project metadata (name, description, author, license, minimum Python version).
-4. Move into the generated project and follow its `README.md` to finish setup.
+2. Answer the remaining questions (project name, description, license, etc.) and follow the generated project's `README.md` to finish setup.
 
 ## Updating an Existing Project
 
@@ -39,19 +31,6 @@ copier update
 ```
 
 Review the diff and accept, reject, or tweak changes as needed.
-
-## Template Questions
-
-Every template asks for the same fields:
-
-- `project_name`
-- `repository_name`
-- `module_name`
-- `author_name`
-- `author_email`
-- `description`
-- `license`
-- `python_version` - choose from 3.11, 3.12, or 3.13
 
 ## Documentation
 
