@@ -49,19 +49,15 @@ dev = [
     "pre-commit",
 ]
 lint = [
-    "ruff",
     "bandit[toml]",
     "mypy",
+    "ruff",
 ]
 test = [
     "pytest",
     "pytest-cov",
     "pytest-xdist",
 ]
-
-[tool.ruff]
-target-version = "py[[ python_version.replace('.', '') ]]"
-extend-include = [".git"]
 
 [tool.bandit]
 skips = ["B101", "B601"]
@@ -79,14 +75,10 @@ warn_unused_ignores = true
 warn_redundant_casts = true
 disallow_any_generics = true
 
+[tool.ruff]
+target-version = "py[[ python_version.replace('.', '') ]]"
+extend-include = [".git"]
+line-length = 88
+
 [tool.pytest.ini_options]
 pythonpath = "src"
-
-[tool.hatch.build.targets.sdist]
-include = [
-  "src/",
-  "tests/",
-]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/[[ module_name ]]"]

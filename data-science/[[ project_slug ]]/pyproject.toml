@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
 
 [project]
 name = "[[ project_slug ]]"
@@ -49,35 +49,27 @@ dev = [
     "pre-commit",
 ]
 lint = [
-    "ruff",
     "bandit[toml]",
-]
-lab = [
-    "jupyterlab",
-    "ipywidgets",
+    "ruff",
 ]
 docs = [
     "mkdocs",
-    "mkdocs-material",
     "mkdocs-include-markdown-plugin",
+    "mkdocs-material",
     "mkdocstrings[python]",
 ]
-
-[tool.ruff]
-target-version = "py[[ python_version.replace('.', '') ]]"
-extend-include = [".git", "notebooks", "references", "models", "data"]
+lab = [
+    "ipywidgets",
+    "jupyterlab",
+]
 
 [tool.bandit]
 skips = ["B101", "B601"]
 
+[tool.ruff]
+target-version = "py[[ python_version.replace('.', '') ]]"
+extend-include = [".git", "notebooks", "references", "models", "data"]
+line-length = 88
+
 [tool.pytest.ini_options]
 pythonpath = "src"
-
-[tool.hatch.build.targets.sdist]
-include = [
-  "src/",
-  "tests/",
-]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/[[ module_name ]]"]
