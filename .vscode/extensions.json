@@ -1,0 +1,20 @@
+{
+    "recommendations": [
+        "tamasfe.even-better-toml",
+        "GitHub.vscode-pull-request-github",
+        "mhutchie.git-graph",
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "christian-kohler.path-intellisense",
+        "richie5um2.vscode-sort-json",
+        "redhat.vscode-yaml",
+        "charliermarsh.ruff",
+        "ms-python.debugpy",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "foxundermoon.shell-format",
+        "goessner.mdmath",
+        "ms-vscode.makefile-tools",
+        "oderwat.indent-rainbow"
+    ]
+}
