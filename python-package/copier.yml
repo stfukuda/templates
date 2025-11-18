@@ -1,5 +1,12 @@
 _min_copier_version: "9.0.0"
 _answers_file: ".copier-answers.yml"
+_envops:
+  block_start_string: "[%"
+  block_end_string: "%]"
+  variable_start_string: "[["
+  variable_end_string: "]]"
+  comment_start_string: "[#"
+  comment_end_string: "#]"
 _default_output_path: "[[ project_slug ]]"
 project_name:
   type: str
