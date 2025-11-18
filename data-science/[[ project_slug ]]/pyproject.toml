@@ -27,7 +27,7 @@ classifiers = [
     "Operating System :: MacOS",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    {% set all_versions = ["3.11", "3.12", "3.13"] -%}
+    {% set all_versions = ["3.10", "3.11", "3.12", "3.13", "3.14"] -%}
     {% set current_version_index = all_versions.index(python_version) -%}
     {% for version in all_versions[current_version_index:] -%}
     "Programming Language :: Python :: [[ version ]]",

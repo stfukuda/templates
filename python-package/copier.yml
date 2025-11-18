@@ -45,8 +45,10 @@ license:
 python_version:
   type: str
   help: Minimum supported Python version.
-  default: "3.11"
+  default: "3.12"
   choices:
+    - "3.10"
     - "3.11"
     - "3.12"
     - "3.13"
+    - "3.14"

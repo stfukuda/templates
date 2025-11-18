@@ -4,7 +4,7 @@ This repository hosts multiple Python-focused project templates maintained with 
 
 ## Prerequisites
 
-- Python 3.11+
+- Python 3.10+
 - `copier` (see the [official installation guide](https://copier.readthedocs.io/en/stable/getting-started/#installation))
 
 ## Templates
