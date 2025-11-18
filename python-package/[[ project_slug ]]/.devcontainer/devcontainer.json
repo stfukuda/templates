@@ -7,7 +7,8 @@
       "PYTHON_VERSION": "[[ python_version ]]"
     }
   },
-  "remoteUser": "developer",
+  "remoteUser": "vscode",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
   "mounts": [
     "source=uv-cache,target=/workspace/.cache/uv,type=volume"
@@ -86,6 +87,7 @@
         "yzhang.markdown-all-in-one",
         "redhat.vscode-yaml",
         "njpwerner.autodocstring",
+        "tamasfe.even-better-toml",
         "eamodio.gitlens",
         "mhutchie.git-graph"
       ]

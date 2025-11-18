@@ -5,10 +5,13 @@ FROM mcr.microsoft.com/devcontainers/python:${PYTHON_VERSION}
 USER root
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y ca-certificates curl git build-essential \
+    && apt-get install --no-install-recommends -y \
+        build-essential \
+        ca-certificates \
+        curl \
+        git \
+        just \
     && rm -rf /var/lib/apt/lists/*
-
-RUN curl -fsSL https://just.systems/install.sh | bash -s -- --to /usr/local/bin
 
 RUN mkdir -p /workspace/.cache/uv && chown -R vscode:vscode /workspace
 
@@ -20,6 +23,6 @@ ENV PATH="/home/vscode/.local/bin:${PATH}" \
     UV_LINK_MODE=copy \
     UV_PROJECT_ENV=/workspace/.venv
 
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh -s -- -y
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
 CMD ["sleep", "infinity"]
